@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Prediction Result</h1>
+        <div class="alert alert-info" role="alert">
+            {{ suggestions.message }}
+        </div>
+        {% if prediction == 1 %}
+        <h3>Suggestions for Thyroid Management:</h3>
+        <ul>
+            {% for tip in suggestions.tips %}
+            <li>{{ tip }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Top Hospitals in India for Thyroid Treatment:</h3>
+        <ul>
+            {% for hospital in suggestions.hospitals %}
+            <li>{{ hospital }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h3>Tips for Maintaining Thyroid Health:</h3>
+        <ul>
+            {% for tip in suggestions.tips %}
+            <li>{{ tip }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="/" class="btn btn-primary">Go Back</a>
+    </div>
+</body>
+</html>
